@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Телеканал ТВР | Главная</title>
+<body style="font-family: 'Dela Gothic One', sans;">
+<link href="https://tv-tvr-ru.blogspot.com/favicon.ico" rel="icon" type="image/x-icon">
+<br><br><br><br>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
+a{
+color:white;
+text-decoration:none;
+scale:1.0;
+transition:0.2s;
+margin-right:5px;
+margin-left:5px;
+}
+a:hover{
+scale:1.2;
+transition:0.2s;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('bg.png') no-repeat center center/cover;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+z-index:-1;
+}
+.settings-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: background 0.2s, transform 0.2s;
+}
+.settings-btn img {
+    width: 32px; height: 32px;
+}
+.settings-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* --- МЕНЮ НАСТРОЕК --- */
+.settings-menu {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Прозрачность для fade-in */
+    transform: scale(0.9); /* Уменьшаем для эффекта вылета */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Плавная анимация */
+}
+
+/* Класс для активного (открытого) меню */
+.settings-menu.active {
+    display: flex;
+    opacity: 1; /* Появляется */
+    transform: scale(1); /* Возвращается к нормальному размеру */
+}
+
+/* Анимация самого блока с настройками */
+.menu-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    transform: translateY(30px); /* Сдвиг вниз для эффекта вылета */
+    opacity: 0;
+    animation: fadeInUp 0.4s forwards; /* Анимация появления */
+}
+
+/* Ключевые кадры анимации */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.menu-content h3 {
+    margin-top: 0;
+}
+.menu-content label {
+    display: block;
+}
+.menu-content button,
+.menu-content a {
+    display: block;
+    margin-top: 15px;
+}
+
+.emp{
+background:white;
+border-radius:20px;
+padding:15px;
+position:absolute;
+top:80px;
+left:200px;
+width:68%;
+text-align:left;
+bottom:10px;
+overflow:auto;
+}
+.e1{
+padding:10px;
+background:#f3f3f3;
+border-radius:20px;
+width:calc(180px - 20px);
+float:left;
+padding-bottom:0px;
+margin:5px;
+margin-bottom:10px;
+height:340px;
+}
+.ei{
+width:80px;
+border-radius:12px;
+}
+/* Modern browsers — Chrome 121+, Edge 121+, Firefox, Safari 18.2+ */
+* {
+  scrollbar-width: 10px;
+  scrollbar-color: #0ea5e9 #e0f2fe;
+}
+
+/* Legacy WebKit — older Chrome/Edge/Safari, radius, borders & shadows */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #e0f2fe;
+  border-radius: 8px;
+  padding: 1px;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #bae6fd;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #7dd3fc;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #0ea5e9;
+  border-radius: 8px;
+  min-height: 30px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #0284c7;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #0369a1;
+}
+
+*::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+</style>
+<div class="background"></div>
+<div style="background:#55555550;position:fixed;border-radius:50px;top:15px;left:25px;backdrop-filter: blur(10px)">
+<center>
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOVTVrNCpDt-ukXg7ZVY245J02yr9i_PY_fvA92arF5oj6uL8BfYrf73532d4EOIhV_uSndFzRxycCP4rLul0cyC_cxvAjidjfFsc5VFjam6oefLPO-8YXjCfpH0x7cecXBdYTM_DYVJ6FOQYH3jpIuRyauKkQuqIPDNaGfqiiXNJBz22ZZ42CCMHu7xvG/w200-h111-rw/%D0%A2%D0%92%D0%A0_%D0%9B%D0%BE%D0%B3%D0%BE_2026.png" style="width:100px;">
+</center>
+</div>
+
+<div style="background:#55555550;position:fixed;border-radius:50px;top:15px;right:25px;color:white;padding-left:20px;padding-right:20px;font-weight:bold;backdrop-filter: blur(10px)">
+<center>
+<p><a href="https://tv-tvr-ru.blogspot.com/">Главная</a> | <a href="https://tvr.forumes.ru/">Форум</a> | <a href="https://max.ru/join/zpVqgoEUBgg1SDbev-aoq-Tkrw4-NrRLJzLvaKzZhko">Канал в MAX</a> | <a href="index.html">Назад</a></p>
+</center>
+</div>
+
+<button class="settings-btn" onclick="toggleMenu()">
+        <!-- Иконка настроек (можно заменить на свою) -->
+        <img src="https://img.icons8.com/fluency/48/settings.png" alt="Настройки">
+    </button>
+
+    <!-- МЕНЮ НАСТРОЕК (скрыто по умолчанию) -->
+    <div class="settings-menu" id="settingsMenu">
+        <div class="menu-content">
+
+            <h3>Настройки</h3>
+            <label>
+                <input type="checkbox" id="blurToggle" onchange="toggleBlur()">
+                Размазать фон<br>
+<span style="color:gray;font-size:11px;">Для мощных устройств.</span>
+            </label>
+            
+            <button onclick="alert('Пока недоступно')">Стать разработчиком</button>
+            
+            <a href="mannualing.html" target="_blank" style="text-shadow: 0px 0px 5px black;">Программа TimeProgramm</a>
+
+<button onclick="toggleMenu()" style="float: center; background: none; border: none; font-size: 12px; cursor: pointer;">✖ Закрыть</button>
+        </div>
+    </div>
+
+<center>
+
+<div class="emp">
+<h1>О бизнесе</h1>
+<p>Телеканал ТВР - семейный познавательный телеканал. Запущен 01.08.2025</p>
+<p>Наши интернет-ресурсы:
+<br><br>MAX-Канал:<br>
+<a href="https://max.ru/join/zpVqgoEUBgg1SDbev-aoq-Tkrw4-NrRLJzLvaKzZhko" style="color:dodgerblue">https://max.ru/join/zpVqgoEUBgg1SDbev-aoq-Tkrw4-NrRLJzLvaKzZhko</a>
+<br><br>Новый сайт:<br>
+<a href="https://tv-tvr-ru.blogspot.com/" style="color:dodgerblue">https://tv-tvr-ru.blogspot.com/</a>
+<br><br>Форум телеканала:<br>
+<a href="https://tvr.forumes.ru/" style="color:dodgerblue">https://tvr.forumes.ru/</a>
+</p>
+<br>
+<h2><button onclick="alert('Вы будете перенаправлены на следующую страницу:\nhttps://tv-tvr-ru.blogspot.com/p/blog-page_22.html');window.location.href = 'https://tv-tvr-ru.blogspot.com/p/blog-page_22.html'" style="float:right;padding:5px;border-radius:20px;background:dodgerblue;font-family: 'Dela Gothic One', sans;border:none;color:white;">Стать сотрудником!</button>Сотрудники:</h2>
+
+
+<div>
+<div class="e1">
+<img src="emp/1.jpg" class="ei"><br><h3>Константин Харитонов</h3><h6>Сервис-инженер видеокамер и аппаратуры</h6>
+</div>
+<div class="e1">
+<img src="emp/2.jpg" class="ei"><br><h3>Полина Никонова</h3><h6>Инженер связи</h6>
+</div>
+<div class="e1">
+<img src="emp/3.jpg" class="ei"><br><h3>Маргарита Тимофеева</h3><h6>Осветитель (Специалист по освещению)</h6>
+</div>
+<div class="e1">
+<img src="emp/4.jpg" class="ei"><br><h3>Николай Голубев</h3><h6>Электрик</h6>
+</div>
+<div class="e1">
+<img src="emp/5.jpg" class="ei"><br><h3>Артём Соколов</h3><h6>Оператор видеосвязи</h6>
+</div>
+<div class="e1">
+<img src="emp/6.jpg" class="ei"><br><h3>Анастасия Сорокина</h3><h6>Монтажёр</h6>
+</div>
+<div class="e1">
+<img src="emp/7.jpg" class="ei"><br><h3>Сергей Дмитриев</h3><h6>Продюссер</h6>
+</div>
+<div class="e1">
+<img src="emp/8.jpg" class="ei"><br><h3>Виталий Яковлев</h3><h6>Телевизионный оператор</h6>
+</div>
+<div class="e1">
+<img src="emp/9.jpg" class="ei"><br><h3>Григорий Кузнецов</h3><h6>Звукорежиссёр</h6>
+</div>
+<div class="e1">
+<img src="emp/10.jpg" class="ei"><br><h3>Дмитрий Петров</h3><h6>Тележурналист, ведущий</h6>
+</div>
+<div class="e1">
+<img src="emp/11.jpg" class="ei"><br><h3>Юрий Карпов</h3><h6>Мастер по оборудованию</h6>
+</div>
+<div class="e1">
+<img src="emp/12.jpg" class="ei"><br><h3>Алексей Волков</h3><h6>PR-Менеджер</h6>
+</div>
+<div class="e1">
+<img src="emp/13.jpg" class="ei"><br><h3>Олег Ильин</h3><h6>Художник-гример</h6>
+</div>
+<div class="e1">
+<img src="emp/14.jpg" class="ei"><br><h3>Руслан Чернышёв</h3><h6>Специалист по сетевым технологиям и IT</h6>
+</div>
+<div class="e1">
+<img src="emp/25.jpg" class="ei"><br><h3>Виктория Ковалёва</h3><h6>Корреспондент, ведущий</h6>
+</div>
+</div>
+
+</div>
+
+</center>
+
+
+<script>
+// Используем onmousemove для body
+document.body.onmousemove = function(e) {
+    const bg = document.querySelector('.background');
+    const x = (e.clientX / window.innerWidth - 0.5) * -20; // сдвиг по X
+    const y = (e.clientY / window.innerHeight - 0.5) * -20; // сдвиг по Y
+    bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+};
+// --- УПРАВЛЕНИЕ МЕНЮ ---
+function toggleMenu() {
+   const menu = document.getElementById('settingsMenu');
+   menu.classList.toggle('active');
+}
+
+// --- РАЗМЫТИЕ ФОНА ---
+function toggleBlur() {
+   const bg = document.querySelector('.background');
+   const checkbox = document.getElementById('blurToggle');
+   if (checkbox.checked) {
+      bg.style.filter = 'blur(8px)';
+   } else {
+      bg.style.filter = 'none';
+   }
+}
+
+</script>
+
+
+
+</body>
+</html>
