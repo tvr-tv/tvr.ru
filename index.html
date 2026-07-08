@@ -110,18 +110,192 @@ display: block;
 margin-top: 15px;
 }
 </style>
+
+<style>
+
+
+        /* Фиксированная панель наверху */
+        #countdown-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #90EE90; /* Салатовый фон */
+            color: #333;
+            font-size: 20px;
+            text-align: center;
+            line-height: 1.5;
+            padding: 12px 0;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .timer-display {
+            display: inline-flex;
+            gap: 8px;
+            align-items: baseline;
+            font-weight: bold;
+        }
+
+        .timer-part {
+            min-width: 40px;
+            height: 20px;
+            position: relative;
+            perspective: 300px;
+            border-radius: 6px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #fff 50%, #e0f8e0 50%);
+font-size:14px;
+        }
+
+        .card {
+            position: absolute;
+            inset: 0;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease-in-out;
+            backface-visibility: hidden;
+        }
+
+        .face {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1em;
+            backface-visibility: hidden;
+            border-radius: 6px;
+        }
+
+        .front { 
+            background-color: #FFFFFF; 
+            z-index: 2;
+        }
+        
+        .back { 
+            background-color: #E0F8E0; 
+            transform: rotateX(-90deg); 
+            transform-origin: top;
+        }
+
+        /* Анимация поворота */
+        .flipping .card {
+            transform: rotateX(90deg);
+        }
+
+        .separator {
+            margin: 0 4px;
+            font-weight: normal;
+            user-select: none;
+        }
+
+        .bold-text b {
+            font-weight: bold;
+	   
+        }
+    </style>
+
+
+<div id="countdown-bar">
+
+    <span class="bold-text">До дня рождения телеканала осталось:</span>
+    <div class="timer-display" id="animated-timer">
+        <!-- ДНИ -->
+        <div class="timer-part"><div class="card"><div class="face front">00</div><div class="face back">00</div></div></div>
+        <span class="separator">:</span>
+        <!-- ЧАСЫ -->
+        <div class="timer-part"><div class="card"><div class="face front">00</div><div class="face back">00</div></div></div>
+        <span class="separator">:</span>
+        <!-- МИНУТЫ -->
+        <div class="timer-part"><div class="card"><div class="face front">00</div><div class="face back">00</div></div></div>
+        <span class="separator">:</span>
+        <!-- СЕКУНДЫ (новый блок) -->
+        <div class="timer-part"><div class="card"><div class="face front">00</div><div class="face back">00</div></div></div>
+    </div>
+</div>
+
+<!-- Пример остального контента страницы -->
+
+
+<script>
+    const targetDate = new Date('Aug 1, 2026 12:00:00').getTime();
+    
+    // Теперь выбираем все 4 блока
+    const timerParts = document.querySelectorAll('.timer-part');
+    let lastValues = [0, 0, 0, 0]; // Дни, часы, минуты, секунды
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+            clearInterval(timerId);
+            document.getElementById('animated-timer').innerHTML = '<b style="font-size: 1.2em;">Время пришло!</b>';
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        const values = [days, hours, minutes, seconds];
+
+        values.forEach((value, index) => {
+            const strValue = String(value).padStart(2, '0');
+            
+            if (strValue !== lastValues[index]) {
+                animateFlip(timerParts[index], strValue);
+            }
+        });
+
+        lastValues = values.map(v => String(v).padStart(2, '0'));
+    }
+
+    function animateFlip(element, newValue) {
+        const card = element.querySelector('.card');
+        const faceFront = element.querySelector('.front');
+        const faceBack = element.querySelector('.back');
+
+        faceBack.textContent = newValue;
+        element.classList.add('flipping');
+
+        setTimeout(() => {
+            faceFront.textContent = newValue;
+            element.classList.remove('flipping');
+        }, 150); 
+    }
+
+    updateTimer();
+    const timerId = setInterval(updateTimer, 1000);
+</script>
+
+
 <div class="background"></div>
-<div style="background:#55555550;position:fixed;border-radius:50px;top:15px;left:25px;backdrop-filter: blur(10px)">
+<div style="background:#55555550;position:fixed;border-radius:50px;top:67px;left:25px;backdrop-filter: blur(10px);z-index:9;">
 <center>
 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOVTVrNCpDt-ukXg7ZVY245J02yr9i_PY_fvA92arF5oj6uL8BfYrf73532d4EOIhV_uSndFzRxycCP4rLul0cyC_cxvAjidjfFsc5VFjam6oefLPO-8YXjCfpH0x7cecXBdYTM_DYVJ6FOQYH3jpIuRyauKkQuqIPDNaGfqiiXNJBz22ZZ42CCMHu7xvG/w200-h111-rw/%D0%A2%D0%92%D0%A0_%D0%9B%D0%BE%D0%B3%D0%BE_2026.png" style="width:100px;">
 </center>
 </div>
 
-<div style="background:#55555550;position:fixed;border-radius:50px;top:15px;right:25px;color:white;padding-left:20px;padding-right:20px;font-weight:bold;backdrop-filter: blur(10px)">
+<div style="background:#55555550;position:fixed;border-radius:50px;top:67px;right:25px;color:white;padding-left:20px;padding-right:20px;font-weight:bold;backdrop-filter: blur(10px);z-index:9;">
 <center>
-<p><a href="https://tvr-tv.github.io/tvr.ru/">Главная</a> | <a href="https://tvr.forumes.ru/">Форум</a> | <a href="https://m-x.su/tvr-tv">Канал в MAX</a> | <a href="works.html">О бизнесе</a></p>
+
+<p style="font-family:'Arial', sans;">
+<a href="https://tvr-tv.github.io/tvr.ru/"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><title>Главная</title><path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z"/></svg></a> • 
+<a href="https://tvr.forumes.ru/"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><title>Форум</title><path fill="currentColor" d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1m-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1"/></svg></a> • 
+<a href="https://m-x.su/tvr-tv"><img src="https://maxicons.ru/icons/Max_logo.svg" alt="Иконка MAX" width="18" height="18"></a> • 
+<a href="works.html"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><title>О бизнесе</title><g fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="m8.93 6.588l-2.29.287l-.082.38l.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319c.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246c-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></g></svg></a></p>
 </center>
 </div>
+
+<!--
+<div style="background:#55555550;position:fixed;border-radius:50px;top:67px;right:25px;color:white;padding-left:20px;padding-right:20px;font-weight:bold;backdrop-filter: blur(10px);z-index:9;">
+<p>
+<a href="birth.html"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><title>Телеканалу 1 год!</title><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M4 16.5V20a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3.5M3 14v-1a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1m-9-6v3m0-3c1.262 0 2-.968 2-2.625S12 2 12 2s-2 1.718-2 3.375S10.738 8 12 8"/><path d="M9 14a3 3 0 1 1-6 0m12 0a3 3 0 1 1-6 0m12 0a3 3 0 1 1-6 0"/></g></svg></a>
+</p>
+</div>
+-->
 
 <button class="settings-btn" onclick="toggleMenu()">
 <!-- Иконка настроек (можно заменить на свою) -->
@@ -150,7 +324,7 @@ margin-top: 15px;
 <center>
 <h1>Телеканал ТВР</h1>
 <p>Ты видишь радость!</p><br><br>
-<iframe src="https://vk.com/video_ext.php?oid=822549995&id=456239083&hash=" width="640" height="360" frameborder="0" allowfullscreen="1" style="background-color: #000;border-radius:15px" allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<iframe src="https://vk.com/video_ext.php?oid=822549995&id=456239083&hash=" frameborder="0" allowfullscreen="1" style="background-color: #000;border-radius:15px;aspect-ratio: 16/9; width:50%;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>
 </center>
 <div style="background:white;width:calc(100% - 40px);border-radius:10px;color:black;padding:10px;margin:10px">
 <h1>О телеканале</h1>
