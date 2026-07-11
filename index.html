@@ -3,7 +3,6 @@
 <title>Телеканал ТВР | Главная</title>
 <body style="font-family: 'Dela Gothic One', sans;">
 <link href="https://tv-tvr-ru.blogspot.com/favicon.ico" rel="icon" type="image/x-icon">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <br><br><br><br>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
@@ -30,11 +29,12 @@ width: 100%;
 
 .background {
 position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
+ width: calc(100% + 30vw);   /* на 20% шире экрана */
+    height: calc(100% + 30vh);  /* на 20% выше экрана */
+    left: -15vw;                /* сместить влево */
+    top: -15vh;
 background: url('bg.png') no-repeat center center/cover;
+ background-position: center 50%, calc(50% + 1vw) center;
 transition: transform 0.1s ease-out;
 will-change: transform;
 z-index:-1;
@@ -194,12 +194,15 @@ font-size:14px;
             font-weight: bold;
 	   
         }
+.ic {
+padding-bottom:30px;
+}
     </style>
 
 
 <div id="countdown-bar">
 
-    <span class="bold-text">Скоро 1 год!</span>
+    <span class="bold-text">До дня рождения телеканала осталось:</span>
     <div class="timer-display" id="animated-timer">
         <!-- ДНИ -->
         <div class="timer-part"><div class="card"><div class="face front">00</div><div class="face back">00</div></div></div>
@@ -283,10 +286,10 @@ font-size:14px;
 <center>
 
 <p style="font-family:'Arial', sans;">
-<a href="https://tvr-tv.github.io/tvr.ru/"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><title>Главная</title><path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z"/></svg></a> • 
-<a href="https://tvr.forumes.ru/"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><title>Форум</title><path fill="currentColor" d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1m-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1"/></svg></a> • 
-<a href="https://m-x.su/tvr-tv"><img src="https://maxicons.ru/icons/Max_logo.svg" alt="Иконка MAX" width="18" height="18"></a> • 
-<a href="works.html"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><title>О бизнесе</title><g fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="m8.93 6.588l-2.29.287l-.082.38l.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319c.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246c-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></g></svg></a></p>
+<a href="https://tvr-tv.github.io/tvr.ru/" class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><title>Главная</title><path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z"/></svg></a> <br> <br>
+<a href="https://tvr.forumes.ru/" class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><title>Форум</title><path fill="currentColor" d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1m-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1"/></svg></a> <br><br> 
+<a href="https://m-x.su/tvr-tv" class="ic"><img src="https://maxicons.ru/icons/Max_logo.svg" alt="Иконка MAX" width="18" height="18"></a> <br><br>
+<a href="works.html" class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><title>О бизнесе</title><g fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="m8.93 6.588l-2.29.287l-.082.38l.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319c.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246c-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></g></svg></a></p>
 </center>
 </div>
 
@@ -322,16 +325,54 @@ font-size:14px;
 </div>
 </div>
 
+<style>
+.noqa{
+transition:0.2s;
+color:dodgerblue;
+scale:1;
+padding:15px;
+border-radius:60px;
+padding-left:20px;
+padding-right:20px;
+}
+.noqa:hover{
+transition:0.2s;
+background:#aaddff;
+scale:1.2;
+}
+.noqas{
+transition:0.2s;
+color:white;
+scale:1;
+background:dodgerblue;
+padding:15px;
+border-radius:60px;
+padding-left:20px;
+padding-right:20px;
+}
+</style>
+
 <center>
 <h1>Телеканал ТВР</h1>
 <p>Ты видишь радость!</p><br><br>
 <iframe src="https://vk.com/video_ext.php?oid=822549995&id=456239083&hash=" frameborder="0" allowfullscreen="1" style="background-color: #000;border-radius:15px;aspect-ratio: 16/9; width:50%;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+<div style="height:25px;background:#fafafa;color:blue;width:auto;border-radius:70px;padding:20px;padding-left:2px;padding-right:2px;margin-left:10px;margin-right:10px;overflow-x:auto;white-space:nowrap">
+<a class="noqas" href="#main">Главная</a>
+<a class="noqa" href="archive.html">Архив</a>
+<a class="noqa" href="news.html">Новости</a>
+<a class="noqa" href="404.html">Эфир</a>
+
+</div>
 </center>
+
 <div style="background:white;width:calc(100% - 40px);border-radius:10px;color:black;padding:10px;margin:10px">
 <h1>О телеканале</h1>
 <p>Телеканал ТВР - это семейный развлекательный телеканал, запущенный 1 августа 2025 года. Директором телеканала является Трофим Воробьёв, который придумал название телеканала 10 июля 2025 года. На телеканале транслируются разного рода передачи - от развлечений до новостей.</p>
 <details style="border-radius:10px;background:#f3f3f3;">
 <summary style="font-size:30px">Телепрограмма</summary>
+
+<! -- https://svg4.ru/data/Libre-Variety-Colored-Vectors-Collection/gui-archive.webp -->
 <style>
 
         .header-info {
@@ -444,6 +485,7 @@ font-size:14px;
 </div>
 
 <script>
+
 const daysOfWeek = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
 
 /* 
